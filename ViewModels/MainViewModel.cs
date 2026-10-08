@@ -12,12 +12,12 @@ public partial class MainViewModel : ViewModelBase
     static _21p25PanaseckayaContext db = new _21p25PanaseckayaContext();
 
     [ObservableProperty]
-    static public List<Product> productsDb = db.Products.ToList();
+    static public List<Product> productsDb = ProductsList();
 
-    //static private List<Product> ProductsList() 
-    //{
-    //    return .Include(x => x.Name).ToList();
-    //}
+    static private List<Product> ProductsList()
+    {
+        return db.Products.Include(x => x.IdManufactureNavigation).Include(x => x.IdCategoryNavigation).Include(x => x.Stocks).ToList();
+    }
 
     [ObservableProperty]
     public partial string Greeting { get; set; } = "Welcome to Avalonia!";

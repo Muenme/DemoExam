@@ -11,10 +11,28 @@
             <ItemsControl ItemsSource="{Binding ProductsDb}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Name}"></TextBlock>    
-                            <TextBlock Text="{Binding IdCategoryNavigation.Name}"></TextBlock>                            
-                        </StackPanel>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <StackPanel Grid.Column="0">
+							    <TextBlock TextAlignment="Center">
+                                    <TextBlock Text="{Binding IdManufactureNavigation.Name}"></TextBlock>
+								    <TextBlock Text=" | "></TextBlock>
+								    <TextBlock Text="{Binding Name}"></TextBlock>
+							    </TextBlock>							
+                                <TextBlock Text="{Binding IdCategoryNavigation.Name, StringFormat=Категория: {0}}"></TextBlock>
+							    <TextBlock Text="{Binding Stocks.Count, StringFormat=Количество: {0}}"></TextBlock>
+							    <TextBlock Text="{Binding Structure, StringFormat=Состав: {0}}"></TextBlock>								
+                            </StackPanel>
+                             
+    					    <TextBlock 
+                                Grid.Column="1" 
+                                VerticalAlignment="Center" 
+                                TextAlignment="Right" 
+                                Text="{Binding Price}"></TextBlock>
+                        </Grid>
+
+                            
+							
+                           
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>            

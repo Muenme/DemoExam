@@ -11,20 +11,17 @@ public partial class MainViewModel : ViewModelBase
 {
     static _21p25PanaseckayaContext db = new _21p25PanaseckayaContext();
 
-    [ObservableProperty]
+    [ObservableProperty]//лист продуктов с подгрузкой нужных таблиц
     static public List<Product> productsDb = ProductsList();
 
-    static private List<Product> ProductsList()
+    static private List<Product> ProductsList()//подгрузка данных из связанных таблиц с продукт
     {
         return db.Products.Include(x => x.IdManufactureNavigation).Include(x => x.IdCategoryNavigation).Include(x => x.Stocks).ToList();
     }
 
-    [ObservableProperty]
-    public partial string Greeting { get; set; } = "Welcome to Avalonia!";
+    [ObservableProperty] UserControl pageSwitcher;//переключатель страничек
 
-    [ObservableProperty] UserControl pageSwitcher;
-
-    public MainViewModel() 
+    public MainViewModel() //по умолчанию открывается Home
     {
         pageSwitcher = new HomeView(); 
     }

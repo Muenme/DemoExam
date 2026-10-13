@@ -11,7 +11,14 @@
             <ItemsControl ItemsSource="{Binding ProductsDb}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
+                        <Border
+                            BorderBrush="DarkGray"
+                            BorderThickness="2"
+                            CornerRadius="3"
+                            BoxShadow="5 5 10 0 DarkGray"
+                            Padding="8" Margin="5">
                         <Grid ColumnDefinitions="Auto,*">
+                                
                             <StackPanel Grid.Column="0">
                                 <Image 
                                     Source="{Binding Image, Converter={StaticResource ImagePathConverter}}"
@@ -30,19 +37,20 @@
 							    <TextBlock Text="{Binding Structure, StringFormat=Состав: {0}}"></TextBlock>								
                             </StackPanel>
                              
-                            <StackPanel>
-    					        <TextBlock 
-                                    Grid.Column="2" 
+                            <StackPanel 
+                                Grid.Column="2"
+                                VerticalAlignment="Center">
+    					        <TextBlock                                    
                                     VerticalAlignment="Center" 
                                     TextAlignment="Right"
+                                    Padding="0,0,50,0"
+                                    FontSize="18"
                                     Text="{Binding Price}"></TextBlock>                                
                             </StackPanel>
 
                         </Grid>
-
-                            
-							
-                           
+                        </Border>
+     
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>            

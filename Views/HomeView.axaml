@@ -17,38 +17,38 @@
                             CornerRadius="3"
                             BoxShadow="5 5 10 0 DarkGray"
                             Padding="8" Margin="5">
-                        <Grid ColumnDefinitions="Auto,*">
+                            <Grid ColumnDefinitions="Auto,*">
                                 
-                            <StackPanel Grid.Column="0">
-                                <Image 
-                                    Source="{Binding Image, Converter={StaticResource ImagePathConverter}}"
-                                    Width="170" 
-                                    Height="170"></Image>                               
-                            </StackPanel>
+                                <StackPanel Grid.Column="0">
+                                    <Image 
+                                        Source="{Binding Image, Converter={StaticResource ImagePathConverter}}"
+                                        Width="170" 
+                                        Height="170"></Image>                               
+                                </StackPanel>
 
-                            <StackPanel Grid.Column="1">
-							    <TextBlock TextAlignment="Center">
-                                    <TextBlock Text="{Binding IdManufactureNavigation.Name}"></TextBlock>
-								    <TextBlock Text=" | "></TextBlock>
-								    <TextBlock Text="{Binding Name}"></TextBlock>
-							    </TextBlock>							
-                                <TextBlock Text="{Binding IdCategoryNavigation.Name, StringFormat=Категория: {0}}"></TextBlock>
-							    <TextBlock Text="{Binding Stocks.Count, StringFormat=Количество: {0}}"></TextBlock>
-							    <TextBlock Text="{Binding Structure, StringFormat=Состав: {0}}"></TextBlock>								
-                            </StackPanel>
+                                <StackPanel Grid.Column="1">
+							        <TextBlock TextAlignment="Center">
+                                        <TextBlock Text="{Binding IdManufactureNavigation.Name}"></TextBlock>
+								        <TextBlock Text=" | "></TextBlock>
+								        <TextBlock Text="{Binding Name}"></TextBlock>
+							        </TextBlock>							
+                                    <TextBlock Text="{Binding IdCategoryNavigation.Name, StringFormat=Категория: {0}}"></TextBlock>
+							        <TextBlock Text="{Binding Stocks.Count, StringFormat=Количество: {0}}"></TextBlock>
+							        <TextBlock Text="{Binding Structure, StringFormat=Состав: {0}}"></TextBlock>								
+                                </StackPanel>
                              
-                            <StackPanel 
-                                Grid.Column="2"
-                                VerticalAlignment="Center">
-    					        <TextBlock                                    
-                                    VerticalAlignment="Center" 
-                                    TextAlignment="Right"
-                                    Padding="0,0,50,0"
-                                    FontSize="18"
-                                    Text="{Binding Price}"></TextBlock>                                
-                            </StackPanel>
+                                <StackPanel 
+                                    Grid.Column="2"
+                                    VerticalAlignment="Center">
+    					            <TextBlock                                    
+                                        VerticalAlignment="Center" 
+                                        TextAlignment="Right"
+                                        Padding="0,0,50,0"
+                                        FontSize="18"
+                                        Text="{Binding Price}"></TextBlock>                                
+                                </StackPanel>
 
-                        </Grid>
+                            </Grid>
                         </Border>
      
                     </DataTemplate>

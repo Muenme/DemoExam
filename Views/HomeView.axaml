@@ -45,7 +45,7 @@
                                         TextAlignment="Right"
                                         Padding="0,0,50,0"
                                         FontSize="18"
-                                        Text="{Binding Price, StringFormat={}{0:C}}"></TextBlock>                                
+                                        Text="{Binding priceSale, StringFormat={}{0:C}}"></TextBlock>                                
                                 </StackPanel>
 
                             </Grid>

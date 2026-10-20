@@ -3,6 +3,7 @@ using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Demo.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +23,12 @@ public partial class MainViewModel : ViewModelBase
             .Include(x => x.IdManufactureNavigation)
             .Include(x => x.IdCategoryNavigation)
             .Include(x => x.Stocks)
+            .Include(x => x.ProductOrders)
+                .ThenInclude(x => x.IdOrderNavigation)
             .ToList();
         ProductCount(products);
         ProductBrush(products);
+        ProductPrice(products);
         return products;
     }
 
@@ -49,6 +53,36 @@ public partial class MainViewModel : ViewModelBase
             {
                 p.brush = Brushes.DarkGray;
             }
+
+        }
+    }
+
+    public static void ProductPrice(List<Product> products) //расчет скидки
+    {
+        DateOnly calculationDate = DateOnly.FromDateTime(DateTime.Today);//текущая дата
+
+        DateOnly monthStart = new(calculationDate.Year, calculationDate.Month, 1);//начало месяца
+
+        DateOnly previousMonthStart = monthStart.AddMonths(-1);//месяц назад
+
+
+        foreach (Product p in products) 
+        {
+            bool sale = p.ProductOrders.Any(
+                x => x.IdOrderNavigation.Date >= previousMonthStart &&//больше начала прошлого месяца и
+                x.IdOrderNavigation.Date < monthStart);//меньше начала этого месяца
+
+            if (!sale)//заполняем новую цену
+            {
+                p.priceSale = p.Price * 0.75;
+            }
+            else 
+            {
+                p.priceSale = p.Price;
+            }
+
+
+
 
         }
     }

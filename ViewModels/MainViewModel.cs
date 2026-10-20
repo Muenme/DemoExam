@@ -23,22 +23,36 @@ public partial class MainViewModel : ViewModelBase
             .Include(x => x.IdCategoryNavigation)
             .Include(x => x.Stocks)
             .ToList();
+        ProductCount(products);
+        ProductBrush(products);
+        return products;
+    }
+
+    static private void ProductCount(List<Product> products) //заполнение количества
+    {
         foreach (Product p in products) 
         {
-            p.total = p.Stocks.Sum(x => x.Count);//заполнение количества
+            p.total = p.Stocks.Sum(x => x.Count);
+        }
+    }
 
-            if (p.total <= 3)//заполнение поля цвета подсветки
+    static private void ProductBrush(List<Product> products) //заполнение поля цвета подсветки
+    {
+        foreach (Product p in products)
+        {
+
+            if (p.total <= 3)
             {
                 p.brush = Brushes.LightCoral;
             }
-            else 
+            else
             {
                 p.brush = Brushes.DarkGray;
             }
-            
+
         }
-        return products;
     }
+
 
     [ObservableProperty] UserControl pageSwitcher;//переключатель страничек
 

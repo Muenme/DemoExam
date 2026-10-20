@@ -1,7 +1,9 @@
 ﻿using Avalonia.Controls;
+using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Demo.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,7 +18,26 @@ public partial class MainViewModel : ViewModelBase
 
     static private List<Product> ProductsList()//подгрузка данных из связанных таблиц с продукт
     {
-        return db.Products.Include(x => x.IdManufactureNavigation).Include(x => x.IdCategoryNavigation).Include(x => x.Stocks).ToList();
+        List<Product> products = db.Products
+            .Include(x => x.IdManufactureNavigation)
+            .Include(x => x.IdCategoryNavigation)
+            .Include(x => x.Stocks)
+            .ToList();
+        foreach (Product p in products) 
+        {
+            p.total = p.Stocks.Sum(x => x.Count);//заполнение количества
+
+            if (p.total <= 3)//заполнение поля цвета подсветки
+            {
+                p.brush = Brushes.LightCoral;
+            }
+            else 
+            {
+                p.brush = Brushes.DarkGray;
+            }
+            
+        }
+        return products;
     }
 
     [ObservableProperty] UserControl pageSwitcher;//переключатель страничек

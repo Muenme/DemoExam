@@ -14,6 +14,25 @@ namespace Demo.ViewModels;
 
 public partial class MainViewModel : ViewModelBase
 {
+    [ObservableProperty] public UserControl pageSwitcher;//переключатель страничек
+
+    public MainViewModel() //по умолчанию открывается Home
+    {
+        pageSwitcher = new HomeView();
+    }
+
+    [RelayCommand]
+    public void LoginPage() //команда переключения страницы на авторизацию
+    {
+        PageSwitcher = new LoginView();
+    }
+
+    [RelayCommand]
+    public void HomePage() //команда переключения страницы на главную
+    {
+        PageSwitcher = new HomeView();
+    }
+
     static _21p25PanaseckayaContext db = new _21p25PanaseckayaContext();
 
     [ObservableProperty]//лист продуктов с подгрузкой нужных таблиц
@@ -88,17 +107,4 @@ public partial class MainViewModel : ViewModelBase
 
         }
     }
-    [RelayCommand]
-    public void LoginPage() //команда переключения страницы
-    {
-        pageSwitcher = new LoginView();
-    }
-
-    [ObservableProperty] public UserControl pageSwitcher;//переключатель страничек
-
-    public MainViewModel() //по умолчанию открывается Home
-    {
-        pageSwitcher = new HomeView(); 
-    }
-
 }

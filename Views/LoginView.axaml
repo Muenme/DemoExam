@@ -6,10 +6,18 @@
              xmlns:vm="using:Demo.ViewModels"
              x:DataType="vm:MainViewModel"
              x:Class="Demo.Views.LoginView">
-    <StackPanel>
+    <StackPanel VerticalAlignment="Center">
         <TextBox 
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
         </TextBox>
+        <Button
+            Margin="0,15,0,0"
+            Content="Войти"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Command="{Binding HomePageCommand}">
+            
+        </Button>
     </StackPanel>
 </UserControl>

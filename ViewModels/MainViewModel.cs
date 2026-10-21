@@ -14,7 +14,17 @@ namespace Demo.ViewModels;
 
 public partial class MainViewModel : ViewModelBase
 {
+    static _21p25PanaseckayaContext db = new _21p25PanaseckayaContext();
+
     [ObservableProperty] public UserControl pageSwitcher;//переключатель страничек
+
+
+    [ObservableProperty]  public string login;
+
+    [ObservableProperty]  public User user; 
+
+    [ObservableProperty]//лист продуктов с подгрузкой нужных таблиц
+    static public List<Product> productsDb = ProductsList();
 
     public MainViewModel() //по умолчанию открывается Home
     {
@@ -33,10 +43,6 @@ public partial class MainViewModel : ViewModelBase
         PageSwitcher = new HomeView();
     }
 
-    static _21p25PanaseckayaContext db = new _21p25PanaseckayaContext();
-
-    [ObservableProperty]//лист продуктов с подгрузкой нужных таблиц
-    static public List<Product> productsDb = ProductsList();
 
     static private List<Product> ProductsList()//подгрузка данных из связанных таблиц с продукт
     {
@@ -101,10 +107,12 @@ public partial class MainViewModel : ViewModelBase
             {
                 p.priceSale = p.Price;
             }
-
-
-
-
         }
+    }
+    [RelayCommand]
+    public void Enter() 
+    {
+        user = db.Users.First(x => x.Login == Login);
+        HomePage();
     }
 }

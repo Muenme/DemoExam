@@ -13,6 +13,7 @@
             Margin="0,0,0,5">
         </TextBlock>
         <TextBox 
+            Text="{Binding Login}"
             Watermark="Например: login"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
@@ -22,7 +23,7 @@
             Content="Войти"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Command="{Binding HomePageCommand}">
+            Command="{Binding EnterCommand}">
             
         </Button>
     </StackPanel>

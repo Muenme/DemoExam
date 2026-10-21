@@ -6,5 +6,10 @@
              xmlns:vm="using:Demo.ViewModels"
              x:DataType="vm:MainViewModel"
              x:Class="Demo.Views.LoginView">
-  Welcome to Avalonia!
+    <StackPanel>
+        <TextBox 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+        </TextBox>
+    </StackPanel>
 </UserControl>

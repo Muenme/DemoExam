@@ -1,7 +1,9 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Demo.Models;
+using Demo.Views;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections;
@@ -86,9 +88,13 @@ public partial class MainViewModel : ViewModelBase
 
         }
     }
+    [RelayCommand]
+    public void LoginPage() //команда переключения страницы
+    {
+        pageSwitcher = new LoginView();
+    }
 
-
-    [ObservableProperty] UserControl pageSwitcher;//переключатель страничек
+    [ObservableProperty] public UserControl pageSwitcher;//переключатель страничек
 
     public MainViewModel() //по умолчанию открывается Home
     {

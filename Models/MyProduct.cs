@@ -1,4 +1,5 @@
 ﻿using Avalonia.Media;
+using Avalonia.Media.Immutable;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,6 +15,8 @@ namespace Demo.Models
         public Avalonia.Media.IBrush brush { get; set; }
         [NotMapped]
         public double? priceSale { get; set; }
+        [NotMapped]
+        public TextDecorationCollection decoration { get; set; }
 
     }
 }

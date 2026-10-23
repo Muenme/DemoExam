@@ -102,10 +102,11 @@ public partial class MainViewModel : ViewModelBase
             if (!sale)//заполняем новую цену
             {
                 p.priceSale = p.Price * 0.75;
+                p.decoration = new TextDecorationCollection (TextDecorations.Strikethrough);   
             }
             else 
             {
-                p.priceSale = p.Price;
+                p.priceSale = null;
             }
         }
     }

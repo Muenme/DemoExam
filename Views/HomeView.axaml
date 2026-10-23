@@ -55,12 +55,20 @@
                              
                                 <StackPanel 
                                     Grid.Column="2"
-                                    VerticalAlignment="Center">
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal">
+                                    <TextBlock 
+                                        VerticalAlignment="Center" 
+                                        TextAlignment="Right"
+                                        Padding="0,0,10,0"
+                                        FontSize="16"
+                                        Text="{Binding Price, StringFormat={}{0:C}}"
+                                        TextDecorations="{Binding decoration}"></TextBlock>
     					            <TextBlock                                    
                                         VerticalAlignment="Center" 
                                         TextAlignment="Right"
                                         Padding="0,0,50,0"
-                                        FontSize="18"
+                                        FontSize="16"
                                         Text="{Binding priceSale, StringFormat={}{0:C}}"></TextBlock>                                
                                 </StackPanel>
 

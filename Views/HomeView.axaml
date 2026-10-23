@@ -6,12 +6,16 @@
              xmlns:vm="using:Demo.ViewModels"
              x:DataType="vm:MainViewModel"             
              x:Class="Demo.Views.HomeView">
-    <Grid RowDefinitions="100, *">
+    <Grid RowDefinitions="120, *">
         <StackPanel Grid.Row="0">
             <TextBlock 
                 TextAlignment="Center" 
                 Text="Чудо-обувь"
                 Padding="0,15,0,0"></TextBlock>
+            <TextBlock 
+                Text="{Binding User.Name, StringFormat=Привет {0}}"
+                HorizontalAlignment="Right"
+                Margin="0,15,15,15"></TextBlock>
             <Button
                 HorizontalAlignment="Right"
                 Content="Войти"

@@ -19,6 +19,7 @@
             VerticalAlignment="Center">
         </TextBox>
         <Button
+            IsDefault="True"
             Margin="0,15,0,0"
             Content="Войти"
             HorizontalAlignment="Center"

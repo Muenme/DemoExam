@@ -6,12 +6,19 @@
              xmlns:vm="using:Demo.ViewModels"
              x:DataType="vm:MainViewModel"             
              x:Class="Demo.Views.HomeView">
-    <Grid RowDefinitions="120, *">
+    <Grid RowDefinitions="150, *">
         <StackPanel Grid.Row="0">
-            <TextBlock 
-                TextAlignment="Center" 
-                Text="Чудо-обувь"
-                Padding="0,15,0,0"></TextBlock>
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Center">
+                <Image
+                    Height="50"
+                    Source="avares:/Assets/Images/Чудо Обувь.png"></Image>
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Text="Чудо-обувь"></TextBlock>                
+            </StackPanel>
+
             <TextBlock 
                 Text="{Binding User.Name, StringFormat=Привет {0}}"
                 HorizontalAlignment="Right"

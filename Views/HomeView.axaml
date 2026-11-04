@@ -7,10 +7,12 @@
              x:DataType="vm:MainViewModel"             
              x:Class="Demo.Views.HomeView">
     <Grid RowDefinitions="150, *">
-        <StackPanel Grid.Row="0">
+        <StackPanel Grid.Row="0"
+            Background="#D2F6E7">
             <StackPanel
                 Orientation="Horizontal"
-                HorizontalAlignment="Center">
+                HorizontalAlignment="Center"
+                Spacing="10">
                 <Image
                     Height="50"
                     Source="avares:/Assets/Images/Чудо Обувь.png"></Image>

@@ -6,11 +6,13 @@
              xmlns:vm="using:Demo.ViewModels"
              x:DataType="vm:MainViewModel"
              x:Class="Demo.Views.LoginView">
-    <StackPanel VerticalAlignment="Center">
+    <StackPanel 
+        VerticalAlignment="Center"
+        Spacing="10">
         <TextBlock 
             HorizontalAlignment="Center"
             Text="Введите логин:"
-            Margin="0,0,0,5">
+           >
         </TextBlock>
         <TextBox 
             Text="{Binding Login}"
@@ -20,12 +22,16 @@
         </TextBox>
         <Button
             IsDefault="True"
-            Margin="0,15,0,0"
+            
             Content="Войти"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Command="{Binding EnterCommand}">
             
         </Button>
+        <TextBlock 
+            Foreground="#FF8080"
+            HorizontalAlignment="Center"
+            Text="{Binding Exp}"></TextBlock>
     </StackPanel>
 </UserControl>

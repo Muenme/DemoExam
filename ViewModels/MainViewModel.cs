@@ -15,6 +15,8 @@ namespace Demo.ViewModels;
 public partial class MainViewModel : ViewModelBase
 {
     static _21p25PanaseckayaContext db = new _21p25PanaseckayaContext();
+    [ObservableProperty]
+    public static string exp;
 
     [ObservableProperty] public UserControl pageSwitcher;//переключатель страничек
 
@@ -28,7 +30,7 @@ public partial class MainViewModel : ViewModelBase
 
     public MainViewModel() //по умолчанию открывается Home
     {
-        pageSwitcher = new HomeView();
+        PageSwitcher = new HomeView();
     }
 
     [RelayCommand]
@@ -128,7 +130,15 @@ public partial class MainViewModel : ViewModelBase
     [RelayCommand]//проверка логина
     public void Enter() 
     {
-        user = db.Users.First(x => x.Login == Login);
-        HomePage();
+        Exp = string.Empty;
+        try
+        {
+            user = db.Users.First(x => x.Login == Login);
+            HomePage();
+        }
+        catch (Exception)
+        {
+            Exp = "Неверно введен логин!";
+        } 
     }
 }

@@ -74,7 +74,7 @@ public partial class MainViewModel : ViewModelBase
 
             if (p.total <= 3)
             {
-                p.brush = Brushes.LightCoral;
+                p.brush = new SolidColorBrush(Color.Parse("#FF8080"));
             }
             else
             {
@@ -110,7 +110,7 @@ public partial class MainViewModel : ViewModelBase
             }
         }
     }
-    [RelayCommand]
+    [RelayCommand]//проверка логина
     public void Enter() 
     {
         user = db.Users.First(x => x.Login == Login);

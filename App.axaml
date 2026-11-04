@@ -1,5 +1,6 @@
 ﻿<Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="using:Avalonia.Markup.Xaml.Converters"
              x:Class="Demo.App"
              xmlns:local="using:Demo.Converters"
              RequestedThemeVariant="Light">
@@ -8,6 +9,9 @@
         <local:ImagePathConverter x:Key="ImagePathConverter"/>
     </Application.Resources>
     <Application.Styles>
+        <Style Selector="Window">
+            <Setter Property="FontFamily" Value="Calibri"></Setter>
+        </Style>
         <FluentTheme />
     </Application.Styles>
 </Application>

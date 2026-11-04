@@ -12,7 +12,8 @@
             <StackPanel
                 Orientation="Horizontal"
                 HorizontalAlignment="Center"
-                Spacing="10">
+                Spacing="10"
+                Margin="0,15,0,0">
                 <Image
                     Height="50"
                     Source="avares:/Assets/Images/Чудо Обувь.png"></Image>
@@ -21,11 +22,30 @@
                     Text="Чудо-обувь"></TextBlock>                
             </StackPanel>
 
-            <TextBlock 
-                Text="{Binding User.Name, StringFormat=Привет {0}}"
+
+            <TextBlock IsVisible="{Binding !Auth}" Margin="0,15,15,15"></TextBlock>
+            <TextBlock
                 HorizontalAlignment="Right"
-                Margin="0,15,15,15"></TextBlock>
+                Margin="0,15,15,15"
+                IsVisible="{Binding Auth}">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="Здраствуйте, {1} {0} {2}.">
+                        <Binding Path="User.Name" />
+                        <Binding Path="User.Surname" />
+                        <Binding Path="User.Patronymic"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+
             <Button
+                IsVisible="{Binding Auth}"
+                HorizontalAlignment="Right"
+                Content="Выйти"
+                Command="{Binding ExitCommand}"
+                Margin="0,0,15,0">
+            </Button>
+            <Button
+                IsVisible="{Binding !Auth}"
                 HorizontalAlignment="Right"
                 Content="Войти"
                 Command="{Binding LoginPageCommand}"
@@ -55,7 +75,8 @@
 							        <TextBlock TextAlignment="Center" TextWrapping="Wrap">
                                         <TextBlock Text="{Binding IdManufactureNavigation.Name}"></TextBlock>
 								        <TextBlock Text=" | "></TextBlock>
-								        <TextBlock Text="{Binding Name}"></TextBlock>
+                                        <TextBlock Text="{Binding Name}"></TextBlock>
+
 							        </TextBlock>							
                                     <TextBlock Text="{Binding IdCategoryNavigation.Name, StringFormat=Категория: {0}}"></TextBlock>
 							        <TextBlock Text="{Binding stringTotal, StringFormat=Количество: {0}}"></TextBlock>

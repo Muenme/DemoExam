@@ -16,6 +16,9 @@ public partial class MainViewModel : ViewModelBase
 {
     static _21p25PanaseckayaContext db = new _21p25PanaseckayaContext();
     [ObservableProperty]
+    public static bool auth = false;
+
+    [ObservableProperty]//поле для ошибок
     public static string exp;
 
     [ObservableProperty] public UserControl pageSwitcher;//переключатель страничек
@@ -134,11 +137,18 @@ public partial class MainViewModel : ViewModelBase
         try
         {
             user = db.Users.First(x => x.Login == Login);
+            Auth = true;
             HomePage();
         }
         catch (Exception)
         {
             Exp = "Неверно введен логин!";
         } 
+    }
+    [RelayCommand]
+    public void Exit() //выйти из аккаунта
+    {
+        user = null;
+        Auth = false;
     }
 }

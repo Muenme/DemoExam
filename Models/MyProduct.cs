@@ -17,6 +17,8 @@ namespace Demo.Models
         public double? priceSale { get; set; }
         [NotMapped]
         public TextDecorationCollection decoration { get; set; }
+        [NotMapped]
+        public string stringTotal { get; set; }
 
     }
 }

@@ -43,7 +43,7 @@
                             <Grid ColumnDefinitions="Auto,*,Auto">
                                 
                                 <StackPanel Grid.Column="0">
-                                    <Image 
+                                    <Image
                                         Source="{Binding Image, Converter={StaticResource ImagePathConverter}}"
                                         Width="170" 
                                         Height="170"></Image>                               
@@ -56,7 +56,7 @@
 								        <TextBlock Text="{Binding Name}"></TextBlock>
 							        </TextBlock>							
                                     <TextBlock Text="{Binding IdCategoryNavigation.Name, StringFormat=Категория: {0}}"></TextBlock>
-							        <TextBlock Text="{Binding total, StringFormat=Количество: {0}}"></TextBlock>
+							        <TextBlock Text="{Binding stringTotal, StringFormat=Количество: {0}}"></TextBlock>
 							        <TextBlock Text="{Binding Structure, StringFormat=Состав: {0}}" TextWrapping="Wrap"></TextBlock>								
                                 </StackPanel>
                              

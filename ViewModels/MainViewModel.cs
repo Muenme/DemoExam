@@ -56,6 +56,7 @@ public partial class MainViewModel : ViewModelBase
         ProductCount(products);
         ProductBrush(products);
         ProductPrice(products);
+        ProductTotal(products);
         return products;
     }
 
@@ -64,6 +65,20 @@ public partial class MainViewModel : ViewModelBase
         foreach (Product p in products) 
         {
             p.total = p.Stocks.Sum(x => x.Count);
+        }
+    }
+    static private void ProductTotal(List<Product> products)//"много" или "мало"
+    {
+        foreach (Product p in products) 
+        {
+            if (p.total > 5)
+            {
+                p.stringTotal = "много";
+            }
+            else 
+            {
+                p.stringTotal = "мало";
+            }
         }
     }
 

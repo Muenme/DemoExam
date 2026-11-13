@@ -6,7 +6,7 @@
              xmlns:vm="using:Demo.ViewModels"
              x:DataType="vm:MainViewModel"             
              x:Class="Demo.Views.HomeView">
-    <Grid RowDefinitions="150, *">
+    <Grid RowDefinitions="250, *">
         <StackPanel Grid.Row="0"
             Background="#D2F6E7">
             <StackPanel
@@ -14,13 +14,26 @@
                 HorizontalAlignment="Center"
                 Spacing="10"
                 Margin="0,15,0,0">
+
                 <Image
                     Height="50"
                     Source="avares:/Assets/Images/Чудо Обувь.png"></Image>
                 <TextBlock
                     VerticalAlignment="Center"
                     Text="Чудо-обувь"></TextBlock>                
+            </StackPanel>            
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                Spacing="10">
+                <TextBlock 
+                    Text="Каталог товаров" 
+                    TextAlignment="Center"
+                    FontSize="24"
+                    Margin="15">
+                </TextBlock>                
             </StackPanel>
+
 
 
             <TextBlock IsVisible="{Binding !Auth}" Margin="0,15,15,15"></TextBlock>
@@ -52,6 +65,7 @@
                 Margin="0,0,15,0">
             </Button>
         </StackPanel>
+
         <ScrollViewer Grid.Row="1">
             <ItemsControl ItemsSource="{Binding ProductsDb}">
                 <ItemsControl.ItemTemplate>
@@ -91,14 +105,14 @@
                                         VerticalAlignment="Center" 
                                         TextAlignment="Right"
                                         Padding="0,0,10,0"
-                                        FontSize="16"
+                                        FontSize="18"
                                         Text="{Binding Price, StringFormat={}{0:C}}"
                                         TextDecorations="{Binding decoration}"></TextBlock>
     					            <TextBlock                                    
                                         VerticalAlignment="Center" 
                                         TextAlignment="Right"
                                         Padding="0,0,50,0"
-                                        FontSize="16"
+                                        FontSize="18"
                                         Text="{Binding priceSale, StringFormat={}{0:C}}"></TextBlock>                                
                                 </StackPanel>
 

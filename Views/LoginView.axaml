@@ -6,32 +6,53 @@
              xmlns:vm="using:Demo.ViewModels"
              x:DataType="vm:MainViewModel"
              x:Class="Demo.Views.LoginView">
-    <StackPanel 
-        VerticalAlignment="Center"
-        Spacing="10">
-        <TextBlock 
-            HorizontalAlignment="Center"
-            Text="Введите логин:"
-           >
-        </TextBlock>
-        <TextBox 
-            Text="{Binding Login}"
-            Watermark="Например: login"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
-        </TextBox>
-        <Button
-            IsDefault="True"
-            
-            Content="Войти"
-            HorizontalAlignment="Center"
+   <DockPanel
+       >
+        <StackPanel
+            Background="#D2F6E7"
+            DockPanel.Dock="Top">
+            <TextBlock 
+                Text="Авторизация" 
+                TextAlignment="Center"
+                FontSize="24"
+                Margin="15">
+            </TextBlock>
+            <Button
+                HorizontalAlignment="Right"
+                Content="Назад"
+                Margin="5"
+                Command="{Binding HomePageCommand}">
+            </Button>        
+        </StackPanel>
+
+        <StackPanel 
             VerticalAlignment="Center"
-            Command="{Binding EnterCommand}">
+            Spacing="10">
+            <TextBlock 
+                HorizontalAlignment="Center"
+                Text="Введите логин:"
+               >
+            </TextBlock>
+            <TextBox 
+                Text="{Binding Login}"
+                Watermark="Например: login"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+            </TextBox>
+            <Button
+                IsDefault="True"
             
-        </Button>
-        <TextBlock 
-            Foreground="#FF8080"
-            HorizontalAlignment="Center"
-            Text="{Binding Exp}"></TextBlock>
-    </StackPanel>
+                Content="Войти"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Command="{Binding EnterCommand}">
+            
+            </Button>
+            <TextBlock 
+                Foreground="#FF8080"
+                HorizontalAlignment="Center"
+                Text="{Binding Exp}"></TextBlock>
+        </StackPanel>
+    </DockPanel>
+
 </UserControl>

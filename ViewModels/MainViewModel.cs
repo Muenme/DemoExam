@@ -31,6 +31,8 @@ public partial class MainViewModel : ViewModelBase
     [ObservableProperty]//лист продуктов с подгрузкой нужных таблиц
     static public List<Product> productsDb = ProductsList();
 
+    [ObservableProperty] public string selectedCost = "";
+
     public MainViewModel() //по умолчанию открывается Home
     {
         PageSwitcher = new HomeView();
@@ -64,6 +66,14 @@ public partial class MainViewModel : ViewModelBase
         ProductTotal(products);
         return products;
     }
+
+    static private void UpdateProduct() 
+    {
+        var res = productsDb.AsEnumerable();
+
+
+        productsDb.OrderBy(x => x.Price);
+    } 
 
     static private void ProductCount(List<Product> products) //заполнение количества
     {
@@ -150,5 +160,13 @@ public partial class MainViewModel : ViewModelBase
     {
         user = null;
         Auth = false;
+    }
+
+     public void SelectedCostChanged() 
+    { 
+
+
+        
+        UpdateProduct();
     }
 }

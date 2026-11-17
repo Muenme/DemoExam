@@ -50,10 +50,15 @@
                 </TextBlock.Text>
             </TextBlock>
             <Grid ColumnDefinitions="Auto, Auto, *">
-                    <ComboBox Grid.Column="0">
-                    
+                    <ComboBox Grid.Column="0" 
+                        SelectedItem="{Binding SelectedCost}"
+                        PlaceholderText="По цене"
+                        Margin="10,0,10,0">
+                        <ComboBoxItem>По возрастанию</ComboBoxItem>
+                        <ComboBoxItem>По убыванию</ComboBoxItem>                    
                     </ComboBox>
-                    <ComboBox Grid.Column="1">
+                    <ComboBox Grid.Column="1"
+                        Margin="10,0,10,0">
                     
                     </ComboBox>
                     <Button

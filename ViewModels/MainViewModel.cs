@@ -71,16 +71,6 @@ public partial class MainViewModel : ViewModelBase
         return products;
     }
 
-    public void UpdateProduct(string value) 
-    {
-        ProductsDb = ProductsDb0;
-
-        ProductsDb = ProductsDb.Where(x => x.Name.Contains(value) || x.Description.Contains(value)).ToList();
-
-
-
-    } 
-
     static private void ProductCount(List<Product> products) //заполнение количества
     {
         foreach (Product p in products) 
@@ -170,11 +160,22 @@ public partial class MainViewModel : ViewModelBase
 
     partial void OnSelectedCostChanged(string value)
     {
-        UpdateProduct(value);
+        switch (value)
+        {
+            case "По возрастанию":
+                ProductsDb = ProductsDb.OrderBy(x => x.Price).ToList();
+                break;
+            case "По убыванию":
+                ProductsDb = ProductsDb.OrderByDescending(x => x.Price).ToList();
+                break;
+        }
+
     }
 
     partial void OnSearchChanged(string value)
     {
-        UpdateProduct(value);
+        ProductsDb = ProductsDb0;
+
+        ProductsDb = ProductsDb.Where(x => x.Name.Contains(value) || x.Description.Contains(value)).ToList();
     }
 }

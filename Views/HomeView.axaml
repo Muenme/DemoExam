@@ -49,31 +49,31 @@
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
-
-            <StackPanel
-                Orientation="Horizontal">
-
-                <ComboBox>
+            <Grid ColumnDefinitions="Auto, Auto, *">
+                    <ComboBox Grid.Column="0">
                     
-                </ComboBox>
-                <ComboBox>
+                    </ComboBox>
+                    <ComboBox Grid.Column="1">
                     
-                </ComboBox>
-                <Button
-                    IsVisible="{Binding Auth}"
-                    HorizontalAlignment="Right"
-                    Content="Выйти"
-                    Command="{Binding ExitCommand}"
-                    Margin="0,0,15,0">
-                </Button>
-                <Button
-                    IsVisible="{Binding !Auth}"
-                    HorizontalAlignment="Right"
-                    Content="Войти"
-                    Command="{Binding LoginPageCommand}"
-                    Margin="0,0,15,0">
-                </Button>                
-            </StackPanel>
+                    </ComboBox>
+                    <Button
+                        Grid.Column="2"
+                        IsVisible="{Binding Auth}"
+                        HorizontalAlignment="Right"
+                        Content="Выйти"
+                        Command="{Binding ExitCommand}"
+                        Margin="0,0,15,0">
+                    </Button>
+                    <Button
+                        Grid.Column="2"
+                        IsVisible="{Binding !Auth}"
+                        HorizontalAlignment="Right"
+                        Content="Войти"
+                        Command="{Binding LoginPageCommand}"
+                        Margin="0,0,15,0">
+                    </Button>                
+            </Grid>
+
 
         </StackPanel>
 

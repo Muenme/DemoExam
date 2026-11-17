@@ -31,7 +31,11 @@ public partial class MainViewModel : ViewModelBase
     [ObservableProperty]//лист продуктов с подгрузкой нужных таблиц
     static public List<Product> productsDb = ProductsList();
 
+    [ObservableProperty]
+    static public List<Product> productsDb0 = ProductsList();
+
     [ObservableProperty] public string selectedCost = "";
+    [ObservableProperty] public string search;
 
     public MainViewModel() //по умолчанию открывается Home
     {
@@ -67,12 +71,14 @@ public partial class MainViewModel : ViewModelBase
         return products;
     }
 
-    static private void UpdateProduct() 
+    public void UpdateProduct(string value) 
     {
-        var res = productsDb.AsEnumerable();
+        ProductsDb = ProductsDb0;
+
+        ProductsDb = ProductsDb.Where(x => x.Name.Contains(value) || x.Description.Contains(value)).ToList();
 
 
-        productsDb.OrderBy(x => x.Price);
+
     } 
 
     static private void ProductCount(List<Product> products) //заполнение количества
@@ -162,11 +168,13 @@ public partial class MainViewModel : ViewModelBase
         Auth = false;
     }
 
-     public void SelectedCostChanged() 
-    { 
+    partial void OnSelectedCostChanged(string value)
+    {
+        UpdateProduct(value);
+    }
 
-
-        
-        UpdateProduct();
+    partial void OnSearchChanged(string value)
+    {
+        UpdateProduct(value);
     }
 }

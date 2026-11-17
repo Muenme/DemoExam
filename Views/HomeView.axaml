@@ -49,7 +49,7 @@
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
-            <Grid ColumnDefinitions="Auto, Auto, *">
+            <Grid ColumnDefinitions="Auto, Auto, Auto, *">
                     <ComboBox Grid.Column="0" 
                         SelectedItem="{Binding SelectedCost}"
                         PlaceholderText="По цене"
@@ -61,8 +61,14 @@
                         Margin="10,0,10,0">
                     
                     </ComboBox>
+                    <TextBox Grid.Column="2" 
+                        Watermark="Введите текст для поиска"
+                        Text="{Binding Search}"
+                        Margin="10,0,10,0">
+                        
+                    </TextBox>
                     <Button
-                        Grid.Column="2"
+                        Grid.Column="3"
                         IsVisible="{Binding Auth}"
                         HorizontalAlignment="Right"
                         Content="Выйти"
@@ -70,7 +76,7 @@
                         Margin="0,0,15,0">
                     </Button>
                     <Button
-                        Grid.Column="2"
+                        Grid.Column="3"
                         IsVisible="{Binding !Auth}"
                         HorizontalAlignment="Right"
                         Content="Войти"
